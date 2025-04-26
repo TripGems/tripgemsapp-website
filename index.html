@@ -85,7 +85,7 @@
     .iphone-container {
       position: relative;
       width: 85%;
-      border-radius: 50px;
+      border-radius: 45px;
       background-color: rgba(255, 255, 255, 0.6);
       padding: 0px;
       box-sizing: border-box;
@@ -109,6 +109,7 @@
       width: 75%;
       display: block;
       border-radius: 35px;
+      margin-left: 55px
     }
 
     .inside-iphone {
@@ -203,15 +204,44 @@
     }
 
     .second-left {
+      position: relative;
       width: 50%;
       background: url('./images/MapStockImage.jpg') center center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .second-left::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+      backdrop-filter: blur(5px); /* Blur effect */
+      z-index: 1; /* Behind the text */
+    }
+
+    .second-left-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Perfect center */
+      color: white;
+      font-size: 22px;
+      font-weight: 400;
+      text-align: left;
+      line-height: 1.5;
+      padding: 20px;
+      z-index: 2; /* Above the blur */
+      max-width: 100%;
     }
 
     .second-right {
       width: 50%;
       background-color: #041b17;
-      display: flex; /* ✅ Add this */
-      flex-direction: column; /* ✅ Stack vertically */
+      display: flex;
+      flex-direction: column;
       align-items: center; /* ✅ Horizontally center child elements */
     }
   </style>
@@ -268,27 +298,35 @@
 
   <!-- Second Screen -->
   <div class="second-screen" id="second-screen">
-    <div class="second-left"></div>
-    <div class="second-right">
-      <div style="text-align: center; color: white; font-size: 30px; font-weight: bold; margin-top: 40px; margin-right: 300px;">
-        Share Your Gems
+    <div class="second-left">
+      <div class="second-left-text">
+        Whether you're seeking adventure, relaxation, or inspiration for your next getaway Trip Gems
+        enables you and your friends to share your recommendations and build your own network full of personal experiences!
       </div>
-    
-      <div style="display: flex; align-items: center; margin-top: 20px; width: 80%;">
-        <!-- iPhone half image -->
-        <div class="iphone-container-add-review" style="width: 100%; position: relative;">
-          <img src="./images/iphone16Half.png" alt="iPhone" class="iphone-image-add-review" />
-          <div class="inside-iphone">
-            <img src="./images/AddReview.png" alt="App Screenshot" style="width: 70%; border-top-right-radius: 55px; border-top-left-radius: 55px; margin-right: 95px;" />
+    </div>
+    <div class="second-right">
+      <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+        <!-- Left side: Share your Gems and iPhone -->
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 80px;">
+          <div style="text-align: center; color: white; font-size: 30px; font-weight: bold; margin-bottom: 20px; margin-right: 15px;">
+            Share Your Gems
+          </div>
+          <div class="iphone-container-add-review" style="width: 450px; position: relative;">
+            <img src="./images/iphone16Half.png" alt="iPhone" class="iphone-image-add-review" />
+            <div class="inside-iphone">
+              <img src="./images/AddReview.png" alt="App Screenshot" style="width: 69%; border-top-right-radius: 45px; border-top-left-radius: 45px; margin-right: 0px; margin-top: 2px;" />
+            </div>
           </div>
         </div>
     
-        <!-- Text to the right -->
-        <div style="color: white; font-size: 20px; font-weight: normal; margin-left: 0px; max-width: 200px;">
-          Whether it’s a cozy café in Paris or a secret beach in Sri Lanka, leave reviews with tips and stories for your friends to get inspired!
+        <!-- Right side: Text -->
+        <div style="margin-left: 0px; margin-top: 80px; margin-right: 40px;">
+          <div style="color: white; font-size: 20px; font-weight: normal; max-width: 450px; line-height: 1.5;">
+            Be it a cozy café in Paris or a secret beach in Sri Lanka, leave reviews with tips and stories for your friends to get inspired!
+          </div>
         </div>
       </div>
-    </div>      
+    </div>    
   </div>  
 
 </body>
