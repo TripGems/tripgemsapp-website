@@ -5,19 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TripGems App</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth; /* ✅ Added smooth scrolling */
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .section {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 80px 20px;
+    }
+
+    .first-screen {
       background-image: url('./images/mountains.jpg');
       background-size: cover;
       background-position: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      color: white;
+    }
+
+    .content {
       display: flex;
+      width: 100%;
       justify-content: space-between;
       align-items: center;
-      padding: 0 80px;
     }
 
     .left-section {
@@ -26,8 +50,8 @@
     }
 
     .logo {
-      height: 200px;
-      margin-right: 20px;
+      height: 250px;
+      margin-right: 15px;
     }
 
     .logo-row {
@@ -43,6 +67,8 @@
     .logo-sub-text {
       font-size: 30px;
       font-weight: bold;
+      margin-top: 10px;
+      margin-left: 30px
     }
 
     .logo-container {
@@ -65,8 +91,22 @@
       box-sizing: border-box;
     }
 
+    .iphone-container-add-review {
+      position: relative;
+      width: 50%;
+      border-radius: 50px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
     .iphone-image {
       width: 100%;
+      display: block;
+      border-radius: 35px;
+    }
+
+    .iphone-image-add-review {
+      width: 75%;
       display: block;
       border-radius: 35px;
     }
@@ -81,11 +121,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      pointer-events: none; /* prevent overlapping issues */
+      pointer-events: none;
     }
 
     .inside-iphone > * {
-      pointer-events: auto; /* re-enable interaction for button */
+      pointer-events: auto;
     }
 
     .inside-iphone img.logo-inside {
@@ -100,11 +140,10 @@
       color: #174a25;
     }
 
-    .download-button {
+    .download-button, .download-button-main {
       background-color: #3D961D;
       color: white;
       border: none;
-      padding: 12px 20px;
       border-radius: 10px;
       font-size: 16px;
       font-weight: bold;
@@ -112,35 +151,145 @@
       align-items: center;
       gap: 10px;
       cursor: pointer;
+      padding: 12px 20px;
+      text-decoration: none;
     }
 
-    .download-button img {
+    .download-button-main {
+      padding: 18px 28px;
+      font-size: 22px;
+      border-radius: 12px;
+      gap: 12px;
+      margin-right: 20px;
+    }
+
+    .download-button img, .download-button-main img {
       width: 20px;
       height: 20px;
     }
+
+    .download-button-main img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .footer {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0px;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      flex: 1;
+      text-align: center;
+    }
+
+    .footer-center {
+      font-weight: bold;
+      flex: 1;
+      text-align: center;
+    }
+
+    .second-screen {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .second-left {
+      width: 50%;
+      background: url('./images/MapStockImage.jpg') center center/cover no-repeat;
+    }
+
+    .second-right {
+      width: 50%;
+      background-color: #041b17;
+      display: flex; /* ✅ Add this */
+      flex-direction: column; /* ✅ Stack vertically */
+      align-items: center; /* ✅ Horizontally center child elements */
+    }
   </style>
 </head>
-<body>
-  <div class="logo-container">
-    <div class="logo-row">
-      <img src="./images/tripgemsfinal.png" alt="TripGems Logo" class="logo" />
-      <div class="logo-text">Trip Gems</div>
-    </div>
-    <div class="logo-sub-text">A community of travel gems - for you and your friends!</div>
-  </div>  
 
-  <div class="right-section">
-    <div class="iphone-container">
-      <img src="./images/iphone16.png" alt="iPhone" class="iphone-image" />
-      <div class="inside-iphone">
-        <img src="./images/tripgemsfinal.png" alt="TripGems Logo Inside iPhone" class="logo-inside" />
-        <div class="iphone-text">Trip Gems</div>
-        <button class="download-button">
-          Download today!
-          <img src="./images/applestoreios.png" alt="App Store Icon" />
-        </button>
+<body>
+
+  <!-- First Screen -->
+  <div class="section first-screen">
+    <div class="content">
+      <div class="logo-container">
+        <div class="logo-row">
+          <img src="./images/tripgemsfinal.png" alt="TripGems Logo" class="logo" />
+          <div class="logo-text">Trip Gems</div>
+        </div>
+        <div class="logo-sub-text">A community of travel gems - for you and your friends!</div>
+
+        <a href="#second-screen" style="text-decoration: none; margin-top: 20px; margin-left: 20px;">
+          <button class="download-button-main">
+            Learn more
+            <img src="./images/arrowDown.png" alt="Arrow Down" style="margin-left: 0px; width: 28px; height: 15px;" />
+          </button>
+        </a>        
+      </div>  
+
+      <div class="right-section">
+        <div class="iphone-container">
+          <img src="./images/iphone16.png" alt="iPhone" class="iphone-image" />
+          <div class="inside-iphone">
+            <img src="./images/tripgemsfinal.png" alt="TripGems Logo Inside iPhone" class="logo-inside" />
+            <div class="iphone-text">Trip Gems</div>
+            <a href="https://apps.apple.com/dk/app/trip-gems/id6673904849?l=en" target="_blank" style="text-decoration: none;">
+              <button class="download-button">
+                Download today!
+                <img src="./images/applestoreios.png" alt="App Store Icon" />
+              </button>
+            </a>        
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <a href="https://www.privacypolicies.com/live/4b25aa45-62c6-464b-bc33-85c8dfc74c60" target="_blank">
+        <u>Privacy Policy & Terms of Service</u>
+      </a>
+      <div class="footer-center">Trip Gems 2025</div>
+      <a href="mailto:tripgems123@gmail.com">
+        <u>Contact & Support</u>
+      </a>
+    </div>
   </div>
+
+  <!-- Second Screen -->
+  <div class="second-screen" id="second-screen">
+    <div class="second-left"></div>
+    <div class="second-right">
+      <div style="text-align: center; color: white; font-size: 30px; font-weight: bold; margin-top: 40px; margin-right: 300px;">
+        Share Your Gems
+      </div>
+    
+      <div style="display: flex; align-items: center; margin-top: 20px; width: 80%;">
+        <!-- iPhone half image -->
+        <div class="iphone-container-add-review" style="width: 100%; position: relative;">
+          <img src="./images/iphone16Half.png" alt="iPhone" class="iphone-image-add-review" />
+          <div class="inside-iphone">
+            <img src="./images/AddReview.png" alt="App Screenshot" style="width: 70%; border-top-right-radius: 55px; border-top-left-radius: 55px; margin-right: 95px;" />
+          </div>
+        </div>
+    
+        <!-- Text to the right -->
+        <div style="color: white; font-size: 20px; font-weight: normal; margin-left: 0px; max-width: 200px;">
+          Whether it’s a cozy café in Paris or a secret beach in Sri Lanka, leave reviews with tips and stories for your friends to get inspired!
+        </div>
+      </div>
+    </div>      
+  </div>  
+
 </body>
 </html>
